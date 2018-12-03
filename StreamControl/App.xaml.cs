@@ -3,6 +3,9 @@ using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;
 using Prism.Regions;
+using System.IO;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace StreamControl
 {
@@ -18,6 +21,7 @@ namespace StreamControl
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterInstance<IConfigurationService>(ConfigurationService.Load(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\config.json"));
         }
     }
 }

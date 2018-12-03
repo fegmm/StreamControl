@@ -32,15 +32,21 @@ namespace StreamControl.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Bauchbinden")]
         public string LowerthirdsHeader {
             get {
                 return ((string)(this["LowerthirdsHeader"]));
             }
-            set {
-                this["LowerthirdsHeader"] = value;
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Streams")]
+        public string StreamsHeader {
+            get {
+                return ((string)(this["StreamsHeader"]));
             }
         }
     }

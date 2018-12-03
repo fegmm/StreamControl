@@ -5,8 +5,11 @@
     <Setting Name="ProgramTitle" Type="System.String" Scope="Application">
       <Value Profile="(Default)">FEG Streamsteuerung</Value>
     </Setting>
-    <Setting Name="LowerthirdsHeader" Type="System.String" Scope="User">
+    <Setting Name="LowerthirdsHeader" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Bauchbinden</Value>
+    </Setting>
+    <Setting Name="StreamsHeader" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Streams</Value>
     </Setting>
   </Settings>
 </SettingsFile>

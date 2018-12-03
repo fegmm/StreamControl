@@ -1,28 +1,65 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using StreamControl.Models;
-using StreamControl.Properties;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace StreamControl.ViewModels
 {
     public class LowerthirdsViewModel : BindableBase
     {
-        public string LowerthirdsHeader => Settings.Default.LowerthirdsHeader;
+        private readonly IConfigurationService confService;
+        private readonly ICasparCGService casparCGService;
+        private Lowerthird currentlyActive;
 
-        private ObservableCollection<Lowerthird> lowerthirds;
-        public ObservableCollection<Lowerthird> Lowerthirds
+        public string LowerthirdsHeader { get; }
+        public string LowerthirdDeactivateText { get; }
+        public ObservableCollection<Lowerthird> Lowerthirds { get; set; }
+        public DelegateCommand<Lowerthird> EditCommand { get; set; }
+        public DelegateCommand<Lowerthird> ActivateCommand { get; set; }
+        public DelegateCommand DeactivateCommand { get; set; }
+
+
+        public LowerthirdsViewModel(IConfigurationService confService, ICasparCGService casparCGService)
         {
-            get { return lowerthirds; }
-            set { SetProperty(ref lowerthirds, value); }
+            this.confService = confService;
+            this.casparCGService = casparCGService;
+            Lowerthirds = new ObservableCollection<Lowerthird>();
+            LowerthirdsHeader = confService.LowerthirdsHeader;
+            LowerthirdDeactivateText = confService.LowerthirdDeactivateText;
+            Lowerthirds.Add(new Lowerthird() { Title = "Test", Text = "Dies ist nur ein Test" });
+            ActivateCommand = new DelegateCommand<Lowerthird>(ActivateLowerthird, i => !i.IsActive);
+            DeactivateCommand = new DelegateCommand(DeactivateLowerthird, () => currentlyActive != null);
         }
 
-        public LowerthirdsViewModel()
+        public async void ActivateLowerthird(Lowerthird lowerthird)
         {
-            lowerthirds = new ObservableCollection<Lowerthird>();
+            bool worked;
+            if (currentlyActive != null)
+            {
+                currentlyActive.IsActive = false;
+                worked = await casparCGService.SendCommandsAsync(confService.LowerthirdsChangeCommands);
+            }
+            else
+                worked = await casparCGService.SendCommandsAsync(confService.LowerthirdsActivateCommands);
+
+            if (worked)
+            {
+                currentlyActive = lowerthird;
+                lowerthird.IsActive = true;
+                DeactivateCommand.RaiseCanExecuteChanged();
+                ActivateCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+        public async void DeactivateLowerthird()
+        {
+            if(await casparCGService.SendCommandsAsync(confService.LowerthirdsDeactivateCommands))
+            {
+                currentlyActive.IsActive = false;
+                currentlyActive = null;
+                DeactivateCommand.RaiseCanExecuteChanged();
+                ActivateCommand.RaiseCanExecuteChanged();
+            }
         }
     }
 }

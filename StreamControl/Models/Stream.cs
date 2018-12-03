@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StreamControl.Models
 {
-    class Stream : BindableBase
+    public class Stream : BindableBase
     {
         private string title;
         public string Title
@@ -21,6 +21,20 @@ namespace StreamControl.Models
         {
             get { return isActive; }
             set { SetProperty(ref isActive, value); }
+        }
+
+        private IEnumerable<string> activateCommands;
+        public IEnumerable<string> ActivateCommands
+        {
+            get { return activateCommands; }
+            set { SetProperty(ref activateCommands, value); }
+        }
+
+        private IEnumerable<string> deactivateCommands;
+        public IEnumerable<string> DeactivateCommands
+        {
+            get { return deactivateCommands; }
+            set { SetProperty(ref deactivateCommands, value); }
         }
     }
 }

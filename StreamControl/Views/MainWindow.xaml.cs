@@ -10,6 +10,7 @@ namespace StreamControl.Views
         public MainWindow()
         {
             InitializeComponent();
+            this.MinHeight = this.MaxHeight = SystemParameters.WorkArea.Height;
         }
     }
 }
