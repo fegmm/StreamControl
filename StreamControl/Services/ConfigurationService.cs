@@ -11,6 +11,8 @@ namespace StreamControl
 {
     public class ConfigurationService : IConfigurationService
     {
+        public string CancelText { get; set; }
+        public string SaveText { get; set; }
         public string StreamsHeader { get; set; }
         public string LowerthirdsHeader { get; set; }
         public string LowerthirdDeactivateText { get; set; }

@@ -33,6 +33,9 @@ namespace StreamControl
 
         public async Task<bool> SendCommandsAsync(IEnumerable<string> commands)
         {
+            if (commands == null)
+                return true;
+
             bool result = true;
             foreach (var item in commands)
                 if (!await SendCommandAsync(item))

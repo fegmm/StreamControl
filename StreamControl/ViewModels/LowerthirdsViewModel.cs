@@ -49,6 +49,7 @@ namespace StreamControl.ViewModels
                 DeactivateCommand.RaiseCanExecuteChanged();
                 ActivateCommand.RaiseCanExecuteChanged();
             }
+            MainWindowViewModel.a.Raise(MainWindowViewModel.b);
         }
 
         public async void DeactivateLowerthird()
