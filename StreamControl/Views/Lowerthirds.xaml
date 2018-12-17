@@ -4,6 +4,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:views="clr-namespace:StreamControl.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:streamcontrol="clr-namespace:StreamControl"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
         <GroupBox Header="{Binding LowerthirdsHeader}">
@@ -47,4 +49,14 @@
                 Command="{Binding AddLowerthirdCommand}"/>
 
     </Grid>
+
+    <i:Interaction.Triggers>
+        <prism:InteractionRequestTrigger SourceObject="{Binding EditDialogRequest}">
+            <streamcontrol:PopupMetroWindowAction IsModal="True" CenterOverAssociatedObject="True" WindowStyle="{StaticResource DialogWindow}" WindowStartupLocation="CenterOwner">
+                <streamcontrol:PopupMetroWindowAction.WindowContent>
+                    <views:EditLowerthirdDialog/>
+                </streamcontrol:PopupMetroWindowAction.WindowContent>
+            </streamcontrol:PopupMetroWindowAction>
+        </prism:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
 </UserControl>

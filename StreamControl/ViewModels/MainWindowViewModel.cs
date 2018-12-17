@@ -41,12 +41,10 @@ namespace StreamControl.ViewModels
 
         private void ShowStartUpDialog()
         {
-            ShowOverlay = true;
             Confirmation confirmation = new Confirmation() { Content = conf.Lowerthirds, Title = "" };
             StartUpDialogRequest.Raise(confirmation);
             if (!confirmation.Confirmed)
                 conf.Lowerthirds.Clear();
-            ShowOverlay = false;
         }
     }
 }

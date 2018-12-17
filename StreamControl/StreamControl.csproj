@@ -62,9 +62,13 @@
     <Compile Include="Services\ConfigurationService.cs" />
     <Compile Include="Services\ICasparCGService.cs" />
     <Compile Include="Services\IConfigurationService.cs" />
+    <Compile Include="ViewModels\EditLowerthirdDialogViewModel.cs" />
     <Compile Include="ViewModels\LowerthirdsViewModel.cs" />
     <Compile Include="ViewModels\StartupDialogViewModel.cs" />
     <Compile Include="ViewModels\StreamsViewModel.cs" />
+    <Compile Include="Views\EditLowerthirdDialog.xaml.cs">
+      <DependentUpon>EditLowerthirdDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Lowerthirds.xaml.cs">
       <DependentUpon>Lowerthirds.xaml</DependentUpon>
     </Compile>
@@ -74,6 +78,10 @@
     <Compile Include="Views\Streams.xaml.cs">
       <DependentUpon>Streams.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\EditLowerthirdDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Lowerthirds.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
