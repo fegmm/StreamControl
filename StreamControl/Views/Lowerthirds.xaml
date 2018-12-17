@@ -15,7 +15,7 @@
                         <SolidColorBrush x:Key="ControlsDisabledBrush" Color="#FF2F2F2F"/>
                     </Button.Resources>
                 </Button>
-                <ItemsControl ItemsSource="{Binding Lowerthirds}">
+                <ItemsControl ItemsSource="{Binding Lowerthirds}" Focusable="False">
                     <ItemsControl.Resources>
                         <SolidColorBrush x:Key="ControlsDisabledBrush" Color="{StaticResource HighlightColor}"/>
                     </ItemsControl.Resources>

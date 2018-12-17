@@ -7,7 +7,7 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              MaxWidth="250" MinWidth="250">
     <GroupBox Header="{Binding StreamsHeader}">
-        <ItemsControl ItemsSource="{Binding Streams}">
+        <ItemsControl ItemsSource="{Binding Streams}" Focusable="False">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Controls:ToggleSwitch Style="{DynamicResource MahApps.Metro.Styles.ToggleSwitch.Win10}" 
