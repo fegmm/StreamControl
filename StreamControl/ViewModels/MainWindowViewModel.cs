@@ -1,39 +1,52 @@
-﻿using Prism.Interactivity.InteractionRequest;
+﻿using Prism.Commands;
+using Prism.Interactivity.InteractionRequest;
 using Prism.Mvvm;
+using Prism.Regions;
 using StreamControl.Models;
 using StreamControl.Properties;
 using StreamControl.Views;
+using System;
 using System.Collections.Generic;
-using Prism.Regions;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace StreamControl.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        public static InteractionRequest<DataDialogConfirmation<ICollection<Lowerthird>>> a;
-        public static DataDialogConfirmation<ICollection<Lowerthird>> b;
+        private readonly IConfigurationService conf;
 
-        private string _title = Settings.Default.ProgramTitle;
-        public string Title
+        public string Title { get; }
+        public DelegateCommand ShowStartupCommand { get; }
+        public InteractionRequest<Confirmation> StartUpDialogRequest { get; }
+
+        private bool showOverlay;
+        public bool ShowOverlay
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            get { return showOverlay; }
+            set { SetProperty(ref showOverlay, value); }
         }
 
-        public InteractionRequest<DataDialogConfirmation<ICollection<Lowerthird>>> StartUpDialogRequest { get; set; }
 
         public MainWindowViewModel(IRegionManager manager, IConfigurationService conf)
         {
+            this.conf = conf;
+
             manager.RegisterViewWithRegion("StreamRegion", typeof(Streams));
             manager.RegisterViewWithRegion("LowerthirdRegion", typeof(Lowerthirds));
-            conf.Lowerthirds = new List<string>();
-            conf.Lowerthirds.Add("Test");
-            a = StartUpDialogRequest = new InteractionRequest<DataDialogConfirmation<ICollection<Lowerthird>>>();
-            b = new DataDialogConfirmation<ICollection<Lowerthird>>(conf.Lowerthirds.Select(i => new Lowerthird() { Title = i }).ToList()) { Title = "Startup" };
+
+            Title = Settings.Default.ProgramTitle;
+            ShowStartupCommand = new DelegateCommand(ShowStartUpDialog);
+            StartUpDialogRequest = new InteractionRequest<Confirmation>();
         }
 
-
+        private void ShowStartUpDialog()
+        {
+            ShowOverlay = true;
+            Confirmation confirmation = new Confirmation() { Content = conf.Lowerthirds, Title = "" };
+            StartUpDialogRequest.Raise(confirmation);
+            if (!confirmation.Confirmed)
+                conf.Lowerthirds.Clear();
+            ShowOverlay = false;
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace StreamControl
         public string LowerthirdsHeader { get; set; }
         public string LowerthirdDeactivateText { get; set; }
         public ICollection<Models.Stream> Streams { get; set; }
-        public ICollection<string> Lowerthirds { get; set; }
+        public ICollection<Lowerthird> Lowerthirds { get; set; }
         public ICollection<string> LowerthirdsActivateCommands { get; set; }
         public ICollection<string> LowerthirdsChangeCommands { get; set; }
         public ICollection<string> LowerthirdsDeactivateCommands { get; set; }

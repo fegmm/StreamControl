@@ -57,7 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Stream.cs" />
-    <Compile Include="Models\DataDialogConfirmation.cs" />
+    <Compile Include="PopupMetroWindowAction.cs" />
     <Compile Include="Services\CasparCGService.cs" />
     <Compile Include="Services\ConfigurationService.cs" />
     <Compile Include="Services\ICasparCGService.cs" />

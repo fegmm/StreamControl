@@ -1,13 +1,15 @@
 {
+  "CancelText": "Abbrechen",
+  "SaveText": "Speichern",
   "InitCommands": [],
 
   "LowerthirdsHeader": "Bauchbinden",
-  "LowerthirdDeactivateText":  "Bauchbinden ausblenden",
+  "LowerthirdDeactivateText": "Bauchbinden ausblenden",
   "Lowerthirds": [
-    "Textlesung",
-    "Prediger",
-    "Predigttitel",
-    "Textstelle"
+    { "Title": "Textlesung" },
+    { "Title": "Prediger" },
+    { "Title": "Predigtitel" },
+    { "Title": "Textstelle" }
   ],
 
 

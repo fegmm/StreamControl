@@ -3,22 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"             
              xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
-             prism:ViewModelLocator.AutoWireViewModel="True">
-    <StackPanel>
+             prism:ViewModelLocator.AutoWireViewModel="True" FocusManager.FocusedElement="{Binding ElementName=txt}">
+    <StackPanel Margin="4">
         <ItemsControl ItemsSource="{Binding Lowerthirds}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <StackPanel Margin="0,4,0,0">
                         <TextBlock Text="{Binding Title}"/>
-                        <TextBox Text="{Binding Text}"/>
+                        <TextBox Text="{Binding Text}" x:Name="txt"/>
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <UniformGrid Columns="2" Rows="1">
-            <Button Content="{Binding Conf.CancelText}" Margin="4"/>
-            <Button Content="{Binding Conf.SaveText}" Margin="4"/>
-        </UniformGrid>
+        <Button Content="{Binding Conf.SaveText}" Command="{Binding OkCommand}" Margin="0,8,0,4" IsDefault="True"/>
     </StackPanel>
     
 </UserControl>

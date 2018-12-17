@@ -23,10 +23,9 @@ namespace StreamControl.ViewModels
         {
             this.confService = confService;
             this.casparCGService = casparCGService;
-            Lowerthirds = new ObservableCollection<Lowerthird>();
+            Lowerthirds = new ObservableCollection<Lowerthird>(confService.Lowerthirds);
             LowerthirdsHeader = confService.LowerthirdsHeader;
             LowerthirdDeactivateText = confService.LowerthirdDeactivateText;
-            Lowerthirds.Add(new Lowerthird() { Title = "Test", Text = "Dies ist nur ein Test" });
             ActivateCommand = new DelegateCommand<Lowerthird>(ActivateLowerthird, i => !i.IsActive);
             DeactivateCommand = new DelegateCommand(DeactivateLowerthird, () => currentlyActive != null);
         }
@@ -49,7 +48,6 @@ namespace StreamControl.ViewModels
                 DeactivateCommand.RaiseCanExecuteChanged();
                 ActivateCommand.RaiseCanExecuteChanged();
             }
-            MainWindowViewModel.a.Raise(MainWindowViewModel.b);
         }
 
         public async void DeactivateLowerthird()

@@ -4,8 +4,9 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:prism="http://prismlibrary.com/"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
-                      xmlns:views="clr-namespace:StreamControl.Views"
-                      prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:views="clr-namespace:StreamControl.Views"
+        xmlns:streamcontrol="clr-namespace:StreamControl"
+        prism:ViewModelLocator.AutoWireViewModel="True"
         WindowStyle="None" Top="0" Left="0" WindowTransitionsEnabled="False" ShowSystemMenuOnRightClick="False"
         ShowTitleBar="False" ShowCloseButton="False" ShowMaxRestoreButton="False" ShowMinButton="False"
         BorderThickness="0"
@@ -15,12 +16,15 @@
         <ContentControl DockPanel.Dock="Top" prism:RegionManager.RegionName="LowerthirdRegion" />
     </DockPanel>
     <i:Interaction.Triggers>
+        <i:EventTrigger EventName="ContentRendered">
+            <i:InvokeCommandAction Command="{Binding ShowStartupCommand}"/>
+        </i:EventTrigger>
         <prism:InteractionRequestTrigger SourceObject="{Binding StartUpDialogRequest}">
-            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True" WindowStyle="{StaticResource DialogWindow}" WindowStartupLocation="CenterOwner" >
-                <prism:PopupWindowAction.WindowContent>
+            <streamcontrol:PopupMetroWindowAction IsModal="True" CenterOverAssociatedObject="True" WindowStyle="{StaticResource DialogWindow}" WindowStartupLocation="CenterOwner" >
+                <streamcontrol:PopupMetroWindowAction.WindowContent>
                     <views:StartupDialog/>
-                </prism:PopupWindowAction.WindowContent>
-            </prism:PopupWindowAction>
+                </streamcontrol:PopupMetroWindowAction.WindowContent>
+            </streamcontrol:PopupMetroWindowAction>
         </prism:InteractionRequestTrigger>
     </i:Interaction.Triggers>
 </Controls:MetroWindow>

@@ -11,20 +11,20 @@ namespace StreamControl.ViewModels
     public class StartupDialogViewModel : BindableBase, IInteractionRequestAware
     {
         public IConfigurationService Conf { get; }
-        public ICollection<Lowerthird> Lowerthirds { get { return notification?.Data; } }
+        public ICollection<Lowerthird> Lowerthirds { get { return (ICollection<Lowerthird>)notification?.Content; } }
         public DelegateCommand OkCommand { get; set; }
         public DelegateCommand CancelCommand { get; set; }
 
 
-        private DataDialogConfirmation<ICollection<Lowerthird>> notification;
+        private Confirmation notification;
         public INotification Notification
         {
             get { return notification; }
             set
             {
-                if (value is DataDialogConfirmation<ICollection<Lowerthird>> ddc)
+                if (value is Confirmation c && c.Content is ICollection<Lowerthird>)
                 {
-                    SetProperty(ref notification, ddc);
+                    SetProperty(ref notification, c);
                     RaisePropertyChanged(nameof(Lowerthirds));
                 }
             }

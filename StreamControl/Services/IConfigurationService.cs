@@ -8,7 +8,7 @@ namespace StreamControl
         string CancelText { get; set; }
         ICollection<string> InitCommands { get; set; }
         string LowerthirdDeactivateText { get; set; }
-        ICollection<string> Lowerthirds { get; set; }
+        ICollection<Lowerthird> Lowerthirds { get; set; }
         ICollection<string> LowerthirdsActivateCommands { get; set; }
         ICollection<string> LowerthirdsChangeCommands { get; set; }
         ICollection<string> LowerthirdsDeactivateCommands { get; set; }
