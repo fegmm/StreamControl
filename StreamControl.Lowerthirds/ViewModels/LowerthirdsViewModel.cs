@@ -1,10 +1,11 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Interactivity.InteractionRequest;
-using StreamControl.Lowerthirds.Models;
-using System.Collections.ObjectModel;
-using System;
+using Prism.Mvvm;
 using StreamControl.Core;
+using StreamControl.Lowerthirds.Models;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace StreamControl.Lowerthirds.ViewModels
 {
@@ -25,7 +26,6 @@ namespace StreamControl.Lowerthirds.ViewModels
         public DelegateCommand<Lowerthird> EditCommand { get; }
 
         public InteractionRequest<Confirmation> EditDialogRequest { get; }
-
 
         public LowerthirdsViewModel(Configuration conf, ICasparCGService casparCGService)
         {
@@ -51,10 +51,10 @@ namespace StreamControl.Lowerthirds.ViewModels
             if (currentlyActive != null)
             {
                 currentlyActive.IsActive = false;
-                worked = await casparCGService.SendCommandsAsync(configuration.LowerthirdsChangeCommands);
+                worked = await casparCGService.SendCommandsAsync(TransformCommands(configuration.LowerthirdsChangeCommands, lowerthird));
             }
             else
-                worked = await casparCGService.SendCommandsAsync(configuration.LowerthirdsActivateCommands);
+                worked = await casparCGService.SendCommandsAsync(TransformCommands(configuration.LowerthirdsActivateCommands, lowerthird));
 
             if (worked)
             {
@@ -76,7 +76,7 @@ namespace StreamControl.Lowerthirds.ViewModels
 
         public async void Deactivate()
         {
-            if (await casparCGService.SendCommandsAsync(configuration.LowerthirdsDeactivateCommands))
+            if (await casparCGService.SendCommandsAsync(TransformCommands(configuration.LowerthirdsDeactivateCommands, currentlyActive)))
             {
                 currentlyActive.IsActive = false;
                 currentlyActive = null;
@@ -98,6 +98,12 @@ namespace StreamControl.Lowerthirds.ViewModels
             EditDialogRequest.Raise(confirmation);
             if (lowerthird.IsActive)
                 Activate(lowerthird);
+        }
+
+        private IEnumerable<string> TransformCommands(IEnumerable<string> commands, Lowerthird lowerthird)
+        {
+            return commands.Select(i => i.Replace("%TITLE%", lowerthird.Title)
+                                            .Replace("%TEXT%", lowerthird.Text));
         }
     }
 }

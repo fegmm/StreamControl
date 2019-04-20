@@ -6,5 +6,8 @@
     { "Title": "Prediger" },
     { "Title": "Predigtitel" },
     { "Title": "Textstelle" }
-  ]
+  ],
+  "LowerthirdsDeactivateCommands": [],
+  "LowerthirdsChangeCommands": [],
+  "LowerthirdsActivateCommands": []
 }
