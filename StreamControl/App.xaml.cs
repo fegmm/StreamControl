@@ -29,8 +29,8 @@ namespace StreamControl
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             moduleCatalog.AddModule(typeof(CoreModule));
-            moduleCatalog.AddModule(typeof(LowerthirdsModule));
             moduleCatalog.AddModule(typeof(StreamsModule));
+            moduleCatalog.AddModule(typeof(LowerthirdsModule));
 
             base.ConfigureModuleCatalog(moduleCatalog);
         }

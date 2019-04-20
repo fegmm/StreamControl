@@ -1,0 +1,10 @@
+{
+  "LowerthirdsHeader": "Bauchbinden",
+  "LowerthirdDeactivateText": "Bauchbinden ausblenden",
+  "Lowerthirds": [
+    { "Title": "Textlesung" },
+    { "Title": "Prediger" },
+    { "Title": "Predigtitel" },
+    { "Title": "Textstelle" }
+  ]
+}

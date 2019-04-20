@@ -5,7 +5,8 @@
              xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:views="clr-namespace:StreamControl.Streams.Views"
              prism:ViewModelLocator.AutoWireViewModel="True"
-             MaxWidth="250" MinWidth="250">
+             MaxWidth="250" MinWidth="250"
+             DockPanel.Dock="Bottom">
     <GroupBox Header="{Binding StreamsHeader}">
         <ItemsControl ItemsSource="{Binding Streams}" Focusable="False">
             <ItemsControl.ItemTemplate>

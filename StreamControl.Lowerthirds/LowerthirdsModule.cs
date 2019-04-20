@@ -2,6 +2,8 @@
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
+using StreamControl.Lowerthirds.Models;
+using StreamControl.Core;
 
 namespace StreamControl.Lowerthirds
 {
@@ -16,7 +18,7 @@ namespace StreamControl.Lowerthirds
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+            containerRegistry.RegisterInstance(new Configuration().Load("lowerthirds.config.json"));
         }
     }
 }

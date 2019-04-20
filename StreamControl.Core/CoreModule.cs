@@ -14,6 +14,7 @@ namespace StreamControl.Core
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterInstance<ICasparCGService>(new CasparCGService());
+            containerRegistry.RegisterInstance(new Configuration().Load("core.config.json"));
         }
     }
 }

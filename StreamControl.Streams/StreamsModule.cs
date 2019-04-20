@@ -1,6 +1,8 @@
 ﻿using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
+using StreamControl.Core;
+using StreamControl.Streams.Models;
 
 namespace StreamControl.Streams
 {
@@ -14,6 +16,7 @@ namespace StreamControl.Streams
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterInstance(new Configuration().Load("streams.config.json"));
 
         }
     }

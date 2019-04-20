@@ -6,7 +6,8 @@
              xmlns:views="clr-namespace:StreamControl.Lowerthirds.Views"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:core="clr-namespace:StreamControl.Core;assembly=StreamControl.Core"
-             prism:ViewModelLocator.AutoWireViewModel="True">
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             DockPanel.Dock="Top">
     <Grid>
         <GroupBox Header="{Binding LowerthirdsHeader}">
             <StackPanel>

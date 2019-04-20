@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreModule.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Models\Configuration.cs" />
     <Compile Include="PopupMetroWindowAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -67,12 +68,14 @@
     </Compile>
     <Compile Include="Regions.cs" />
     <Compile Include="Services\CasparCGService.cs" />
-    <Compile Include="Services\ConfigurationService.cs" />
     <Compile Include="Services\ICasparCGService.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="core.config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
