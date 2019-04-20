@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using StilSoft.CasparCG.AmcpClient;
+﻿using StilSoft.CasparCG.AmcpClient;
 using StilSoft.CasparCG.AmcpClient.Commands;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace StreamControl
+namespace StreamControl.Core
 {
     public class CasparCGService : ICasparCGService
     {
         private AmcpConnection connection;
+
+        public CasparCGService()
+        {
+            connection = new AmcpConnection() { AutoConnect = true, AutoReconnect = true, ReconnectAttempts = 5, KeepAliveEnable = true };
+        }
 
         public async Task Connect()
         {

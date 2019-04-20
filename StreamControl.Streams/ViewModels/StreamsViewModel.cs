@@ -1,13 +1,13 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
-using StreamControl.Models;
-using StreamControl.Properties;
+using StreamControl.Core;
+using StreamControl.Streams.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace StreamControl.ViewModels
+namespace StreamControl.Streams.ViewModels
 {
     public class StreamsViewModel : BindableBase
     {
@@ -19,11 +19,11 @@ namespace StreamControl.ViewModels
         public DelegateCommand<Stream> DeactivateCommand { get; set; }
         
 
-        public StreamsViewModel(IConfigurationService confService, ICasparCGService casparCGService)
+        public StreamsViewModel(Configuration conf, ICasparCGService casparCGService)
         {
             this.casparCGService = casparCGService;
-            Streams = new ObservableCollection<Stream>(confService.Streams);
-            StreamsHeader = confService.StreamsHeader;
+            Streams = new ObservableCollection<Stream>(conf.Streams);
+            StreamsHeader = conf.StreamsHeader;
             ActivateCommand = new DelegateCommand<Stream>(ActivateStream);
             DeactivateCommand = new DelegateCommand<Stream>(DeactivateStream);
         }

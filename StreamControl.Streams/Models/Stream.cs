@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StreamControl.Models
+namespace StreamControl.Streams.Models
 {
     public class Stream : BindableBase
     {

@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="StreamControl.Lowerthirds.Views.Lowerthirds"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:views="clr-namespace:StreamControl.Lowerthirds.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:core="clr-namespace:StreamControl.Core;assembly=StreamControl.Core"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <GroupBox Header="{Binding LowerthirdsHeader}">
+            <StackPanel>
+                <Button Command="{Binding DeactivateCommand}" Content="{Binding LowerthirdDeactivateText}">
+                    <Button.Resources>
+                        <SolidColorBrush x:Key="ControlsDisabledBrush" Color="#FF2F2F2F"/>
+                    </Button.Resources>
+                </Button>
+                <ItemsControl ItemsSource="{Binding Lowerthirds}" Focusable="False">
+                    <ItemsControl.Resources>
+                        <SolidColorBrush x:Key="ControlsDisabledBrush" Color="{StaticResource HighlightColor}"/>
+                    </ItemsControl.Resources>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,4,0,0" ToolTip="{Binding Text}">
+                                <Button Content="{Binding Title}" 
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:Lowerthirds}}, Path=DataContext.ActivateCommand}" CommandParameter="{Binding .}">
+                                </Button>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                    <Button BorderThickness="0"  Width="20" Padding="0" Margin="4,4,2,4" Height="20" MinHeight="0" Focusable="False"
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:Lowerthirds}}, Path=DataContext.EditCommand}" CommandParameter="{Binding .}">
+                                        <iconPacks:PackIconMaterial Kind="Pencil" Width="12"/>
+                                    </Button>
+                                    <Button BorderThickness="0"  Width="20" Padding="0" Margin="2,4,4,4" Height="20" MinHeight="0" Focusable="False"
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:Lowerthirds}}, Path=DataContext.DeleteCommand}" CommandParameter="{Binding .}">
+                                        <iconPacks:PackIconMaterial Kind="Close" Width="12"/>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </GroupBox>
+
+        <Button Focusable="False"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Width="20"
+                Padding="0"
+                Margin="4"
+                Height="20"
+                MinHeight="0"
+                Content="{iconPacks:Material Kind=Plus, Width=12}"
+                Command="{Binding AddCommand}"/>
+
+    </Grid>
+
+    <i:Interaction.Triggers>
+        <prism:InteractionRequestTrigger SourceObject="{Binding EditDialogRequest}">
+            <core:PopupMetroWindowAction IsModal="True" CenterOverAssociatedObject="True" WindowStyle="{StaticResource DialogWindow}" WindowStartupLocation="CenterOwner">
+                <core:PopupMetroWindowAction.WindowContent>
+                    <views:EditLowerthirdDialog/>
+                </core:PopupMetroWindowAction.WindowContent>
+            </core:PopupMetroWindowAction>
+        </prism:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
+</UserControl>

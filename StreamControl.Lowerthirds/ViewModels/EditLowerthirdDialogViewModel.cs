@@ -1,16 +1,16 @@
 ﻿using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
 using Prism.Mvvm;
-using StreamControl.Models;
+using StreamControl.Lowerthirds.Models;
 using System;
 
-namespace StreamControl.ViewModels
+namespace StreamControl.Lowerthirds.ViewModels
 {
     public class EditLowerthirdDialogViewModel : BindableBase, IInteractionRequestAware
     {
         private Lowerthird oldValues;
 
-        public IConfigurationService Conf { get; }
+        public Configuration Conf { get; }
 
         public DelegateCommand OkCommand { get; }
         public DelegateCommand CancelCommand { get; }
@@ -32,7 +32,7 @@ namespace StreamControl.ViewModels
         }
         public Action FinishInteraction { get; set; }
 
-        public EditLowerthirdDialogViewModel(IConfigurationService conf)
+        public EditLowerthirdDialogViewModel(Configuration conf)
         {
             OkCommand = new DelegateCommand(Ok);
             CancelCommand = new DelegateCommand(Cancel);

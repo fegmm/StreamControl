@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StreamControl.Models
+namespace StreamControl.Lowerthirds.Models
 {
     public class Lowerthird : BindableBase
     {
