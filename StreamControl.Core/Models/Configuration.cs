@@ -8,8 +8,6 @@ namespace StreamControl.Core.Models
 {
     class Configuration
     {
-        public string CancelText { get; set; }
-        public string SaveText { get; set; }
         public ICollection<string> InitCommands { get; set; }
     }
 }

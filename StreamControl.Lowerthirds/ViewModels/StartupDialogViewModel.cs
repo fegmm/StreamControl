@@ -11,8 +11,9 @@ namespace StreamControl.Lowerthirds.ViewModels
     {
         public ICollection<Lowerthird> Lowerthirds { get; set; }
 
-        public StartupDialogViewModel(Prism.Events.IEventAggregator events, Configuration conf)
+        public StartupDialogViewModel(Configuration conf)
         {
+            Lowerthirds = conf.Lowerthirds;
         }
     }
 }

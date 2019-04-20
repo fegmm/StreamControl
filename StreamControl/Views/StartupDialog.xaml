@@ -8,7 +8,7 @@
         <ItemsControl prism:RegionManager.RegionName="Startup">
             
         </ItemsControl>
-        <Button Content="{Binding Conf.SaveText}" Command="{Binding OkCommand}" Margin="0,8,0,4" IsDefault="True"/>
+        <Button Content="Ok" Command="{Binding OkCommand}" Margin="0,8,0,4" IsDefault="True"/>
     </StackPanel>
     
 </UserControl>

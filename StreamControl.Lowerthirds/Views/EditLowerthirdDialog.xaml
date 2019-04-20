@@ -10,8 +10,8 @@
         <TextBlock Text="{Binding TextText, FallbackValue=Text}" Margin="0,4,0,0"/>
         <TextBox Text="{Binding Lowerthird.Text}"/>
         <UniformGrid Rows="1" Columns="2" Margin="0,4,0,4">
-            <Button Command="{Binding CancelCommand}" Content="{Binding Conf.CancelText}" Margin="0,0,2,0" IsCancel="True"/>
-            <Button Command="{Binding OkCommand}" Content="{Binding Conf.SaveText}" Margin="2,0,0,0" IsDefault="True"/>
+            <Button Command="{Binding CancelCommand}" Content="Abbrechen" Margin="0,0,2,0" IsCancel="True"/>
+            <Button Command="{Binding OkCommand}" Content="Ok" Margin="2,0,0,0" IsDefault="True"/>
         </UniformGrid>
     </StackPanel>
 </UserControl>
