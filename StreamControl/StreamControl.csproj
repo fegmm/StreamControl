@@ -9,12 +9,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>StreamControl</RootNamespace>
     <AssemblyName>StreamControl</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -115,6 +116,19 @@
     </PackageReference>
     <PackageReference Include="Prism.Unity" Version="7.1.0.431&#xD;" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\StreamControl.Core\StreamControl.Core.csproj">
+      <Project>{52ad602e-7567-4792-9c91-a340d0212462}</Project>
+      <Name>StreamControl.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StreamControl.Lowerthirds\StreamControl.Lowerthirds.csproj">
+      <Project>{13de5462-c0e3-4c1f-9c0f-8e759dd3ee27}</Project>
+      <Name>StreamControl.Lowerthirds</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StreamControl.Streams\StreamControl.Streams.csproj">
+      <Project>{6b6496c3-c9f1-44b8-852a-6ddcea55ee66}</Project>
+      <Name>StreamControl.Streams</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

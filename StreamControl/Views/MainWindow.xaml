@@ -11,10 +11,13 @@
         ShowTitleBar="False" ShowCloseButton="False" ShowMaxRestoreButton="False" ShowMinButton="False"
         BorderThickness="0"
         Title="FEG Stream" Height="1000" MinWidth="{StaticResource AppWidth}" MaxWidth="{StaticResource AppWidth}">
-    <DockPanel>
-        <ContentControl DockPanel.Dock="Bottom" prism:RegionManager.RegionName="StreamRegion" Focusable="False" />
-        <ContentControl DockPanel.Dock="Top" prism:RegionManager.RegionName="LowerthirdRegion" Focusable="False" />
-    </DockPanel>
+    <ItemsControl prism:RegionManager.RegionName="MainContent">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <DockPanel></DockPanel>
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+    </ItemsControl>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="ContentRendered">
             <i:InvokeCommandAction Command="{Binding ShowStartupCommand}"/>
