@@ -10,6 +10,11 @@ namespace StreamControl.Core.Services
     {
         public Dictionary<string, string> Placeholders { get; set; }
 
+        public PlaceholderService()
+        {
+            Placeholders = new Dictionary<string, string>();
+        }
+
         public string ReplacePlaceholders(string text, params object[] instances)
         {
             return ReplacePlaceholders(new string[] { text }, instances).First();
@@ -33,8 +38,8 @@ namespace StreamControl.Core.Services
         private KeyValuePair<string, string> ReplaceDatePlaceholder(string item)
         {
             int start = item.IndexOf("$Date{") + 6;
-            if (start < 0)
-                return new KeyValuePair<string, string>("", "");
+            if (start < 6)
+                return new KeyValuePair<string, string>("---", "---");
 
             int end = item.IndexOf("}", start);
             var format = item.Substring(start, end - start);
