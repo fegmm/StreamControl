@@ -1,7 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
 using Prism.Mvvm;
-using StreamControl.Core;
+using StreamControl.Core.Services;
 using StreamControl.Lowerthirds.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +13,7 @@ namespace StreamControl.Lowerthirds.ViewModels
     {
         private readonly Configuration configuration;
         private readonly ICasparCGService casparCGService;
+        private readonly IPlaceholderService placeholder;
         private Lowerthird currentlyActive;
 
         public ObservableCollection<Lowerthird> Lowerthirds { get; }
@@ -27,10 +28,11 @@ namespace StreamControl.Lowerthirds.ViewModels
 
         public InteractionRequest<Confirmation> EditDialogRequest { get; }
 
-        public LowerthirdsViewModel(Configuration conf, ICasparCGService casparCGService)
+        public LowerthirdsViewModel(Configuration conf, ICasparCGService casparCGService, IPlaceholderService placeholder)
         {
             this.configuration = conf;
             this.casparCGService = casparCGService;
+            this.placeholder = placeholder;
 
             Lowerthirds = new ObservableCollection<Lowerthird>(conf.Lowerthirds);
             LowerthirdsHeader = conf.LowerthirdsHeader;
@@ -50,11 +52,11 @@ namespace StreamControl.Lowerthirds.ViewModels
             bool worked;
             if (currentlyActive != null)
             {
-                currentlyActive.IsActive = false;
-                worked = await casparCGService.SendCommandsAsync(TransformCommands(configuration.LowerthirdsChangeCommands, lowerthird));
+                if (worked = await casparCGService.SendCommandsAsync(placeholder.ReplacePlaceholders(configuration.LowerthirdsChangeCommands, lowerthird)))
+                    currentlyActive.IsActive = false;
             }
             else
-                worked = await casparCGService.SendCommandsAsync(TransformCommands(configuration.LowerthirdsActivateCommands, lowerthird));
+                worked = await casparCGService.SendCommandsAsync(placeholder.ReplacePlaceholders(configuration.LowerthirdsActivateCommands, lowerthird));
 
             if (worked)
             {
@@ -71,12 +73,15 @@ namespace StreamControl.Lowerthirds.ViewModels
             Confirmation confirmation = new Confirmation() { Content = lowerthird, Title = "" };
             EditDialogRequest.Raise(confirmation);
             if (confirmation.Confirmed)
+            {
                 Lowerthirds.Add(lowerthird);
+                placeholder.Placeholders[lowerthird.Title] = lowerthird.Text;
+            }
         }
 
         public async void Deactivate()
         {
-            if (await casparCGService.SendCommandsAsync(TransformCommands(configuration.LowerthirdsDeactivateCommands, currentlyActive)))
+            if (await casparCGService.SendCommandsAsync(placeholder.ReplacePlaceholders(configuration.LowerthirdsDeactivateCommands, currentlyActive)))
             {
                 currentlyActive.IsActive = false;
                 currentlyActive = null;
@@ -95,15 +100,12 @@ namespace StreamControl.Lowerthirds.ViewModels
         private void Edit(Lowerthird lowerthird)
         {
             Confirmation confirmation = new Confirmation() { Content = lowerthird, Title = "" };
+            placeholder.Placeholders.Remove(lowerthird.Title);
             EditDialogRequest.Raise(confirmation);
             if (lowerthird.IsActive)
                 Activate(lowerthird);
-        }
+            placeholder.Placeholders[lowerthird.Title] = lowerthird.Text;
 
-        private IEnumerable<string> TransformCommands(IEnumerable<string> commands, Lowerthird lowerthird)
-        {
-            return commands.Select(i => i.Replace("%TITLE%", lowerthird.Title)
-                                            .Replace("%TEXT%", lowerthird.Text));
         }
     }
 }

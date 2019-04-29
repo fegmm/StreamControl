@@ -69,6 +69,8 @@
     <Compile Include="Regions.cs" />
     <Compile Include="Services\CasparCGService.cs" />
     <Compile Include="Services\ICasparCGService.cs" />
+    <Compile Include="Services\IPlaceholderService.cs" />
+    <Compile Include="Services\PlaceholderService.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

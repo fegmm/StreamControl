@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StreamControl.Core
+namespace StreamControl.Core.Services
 {
     public interface ICasparCGService
     {
