@@ -13,10 +13,10 @@
                 <DataTemplate>
                     <Controls:ToggleSwitch Style="{DynamicResource MahApps.Metro.Styles.ToggleSwitch.Win10}" 
                                            Content="{Binding Title}" 
-                                           IsChecked="{Binding IsActive}"
-                                           CheckedCommand="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:Streams}}, Path=ActivateCommand}" 
-                                           CheckChangedCommandParameter="{Binding .}" 
-                                           UnCheckedCommand="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:Streams}}, Path=DeactivateCommand}" 
+                                           IsChecked="{Binding IsActive, Mode=OneWay}"
+                                           CheckedCommand="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:Streams}}, Path=DataContext.ActivateCommand}" 
+                                           CheckedCommandParameter="{Binding .}" 
+                                           UnCheckedCommand="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:Streams}}, Path=DataContext.DeactivateCommand}" 
                                            UnCheckedCommandParameter="{Binding .}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
