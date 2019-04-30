@@ -15,10 +15,17 @@ namespace StreamControl.Core.Services
             connection = new AmcpConnection() { AutoConnect = true, AutoReconnect = true, ReconnectAttempts = 5, KeepAliveEnable = true };
         }
 
-        public async Task Connect()
+        public async Task<bool> Connect()
         {
-            connection = new AmcpConnection() { AutoConnect = true, AutoReconnect = true, ReconnectAttempts = 5, KeepAliveEnable = true };
-            await connection.ConnectAsync();
+            try
+            {
+                await connection.ConnectAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public async Task<bool> SendCommandAsync(string command)
@@ -38,6 +45,9 @@ namespace StreamControl.Core.Services
         {
             if (commands == null)
                 return true;
+            if (!connection.IsConnected())
+                if(!await Connect())
+                    return false;
 
             bool result = true;
             foreach (var item in commands)
