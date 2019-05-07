@@ -54,5 +54,13 @@ namespace StreamControl.Core.Services
                     propertyPlaceholders[property.Name] = property.GetValue(item).ToString();
             return propertyPlaceholders;
         }
+
+        public void AddAll(IEnumerable<KeyValuePair<string, string>> placeholders)
+        {
+            foreach (var item in placeholders)
+            {
+                Placeholders[item.Key] = item.Value;
+            }
+        }
     }
 }

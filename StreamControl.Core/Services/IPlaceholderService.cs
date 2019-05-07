@@ -8,5 +8,6 @@ namespace StreamControl.Core.Services
 
         IEnumerable<string> ReplacePlaceholders(IEnumerable<string> texts, params object[] instances);
         string ReplacePlaceholders(string text, params object[] instances);
+        void AddAll(IEnumerable<KeyValuePair<string, string>> placeholders);
     }
 }
