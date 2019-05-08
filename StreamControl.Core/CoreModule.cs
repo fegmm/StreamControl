@@ -1,6 +1,5 @@
 ﻿using Prism.Ioc;
 using Prism.Modularity;
-using StreamControl.Core.Models;
 using StreamControl.Core.Services;
 
 namespace StreamControl.Core
@@ -16,8 +15,6 @@ namespace StreamControl.Core
         {
             containerRegistry.RegisterInstance<ICasparCGService>(new CasparCGService());
             containerRegistry.RegisterInstance<IPlaceholderService>(new PlaceholderService());
-            containerRegistry.RegisterInstance(new Configuration().Load("core.config.json"));
-            
         }
     }
 }
