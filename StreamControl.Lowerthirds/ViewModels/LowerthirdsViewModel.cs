@@ -100,11 +100,10 @@ namespace StreamControl.Lowerthirds.ViewModels
         private void Edit(Lowerthird lowerthird)
         {
             Confirmation confirmation = new Confirmation() { Content = lowerthird, Title = "" };
-            placeholder.Placeholders.Remove(lowerthird.Title);
             EditDialogRequest.Raise(confirmation);
+            placeholder.Placeholders[lowerthird.Title] = lowerthird.Text;
             if (lowerthird.IsActive)
                 Activate(lowerthird);
-            placeholder.Placeholders[lowerthird.Title] = lowerthird.Text;
 
         }
     }
