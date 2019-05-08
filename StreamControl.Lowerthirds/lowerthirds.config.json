@@ -4,10 +4,10 @@
   "Lowerthirds": [
     { "Title": "Textlesung" },
     { "Title": "Prediger" },
-    { "Title": "Predigtitel" },
+    { "Title": "Predigttitel" },
     { "Title": "Textstelle" }
   ],
-  "LowerthirdsDeactivateCommands": [],
-  "LowerthirdsChangeCommands": [],
-  "LowerthirdsActivateCommands": []
+  "LowerthirdsActivateCommands": [ "CG 1 ADD 0 \"folder/basic-template\" 1 \"{\"Title\":\"<Title>\", \"Text\":\"<Text>\"}\"" ],
+  "LowerthirdsChangeCommands": [ "CG 1 UPDATE 0 \"{\"Title\":\"<Title>\", \"Text\":\"<Text>\"}\"" ],
+  "LowerthirdsDeactivateCommands": [ "CG 1 STOP 0" ]
 }

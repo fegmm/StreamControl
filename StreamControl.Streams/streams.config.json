@@ -2,8 +2,30 @@
   "StreamsHeader": "Streams",
   "Streams": [
     {
+      "Title": "Bild anzeigen",
+      "ActivateCommands": [ "ADD 1 SCREEN" ],
+      "DeactivateCommands": [ "REMOVE 1 SCREEN" ],
+      "IsActive": true
+    },
+    {
+      "Title": "Logo",
+      "ActivateCommands": [ "PLAY 1-10 [HTML] \"file:///C:/fegliveproducer/bauchbinde/logo/logo.html\"" ],
+      "DeactivateCommands": [ "STOP 1-10" ]
+    },
+    {
+      "Title": "Streamen",
+      "ActivateCommands": [
+        "ADD 1-10 STREAM rtmp://youtube.com/live2/<YoutubeKey> -f flv -r 25 -vcodec libx264 -b 5000000 -minrate 5000000 -maxrate 5000000 -bufsize 5000000 -preset veryfast -tune film -crf 18 -vf format=pix_fmts=yuv420p -strict -2 -c:a aac -b:a 128k",
+        "ADD 1-11 STREAM icecast://<IcecastUser>:<IcecastPassword>@fegmm.de:8000/godilive.mp3 -acodec libmp3lame -content_type audio/mpeg -f mp3"
+      ],
+      "DeactivateCommands": [
+        "REMOVE 1-10",
+        "REMOVE 1-11"
+      ]
+    },
+    {
       "Title": "Aufnahme",
-      "ActivateCommands": [ "ADD 1-1 FILE recording.mov -f mov -vcodec h264 -r 25 -b 3500000 -preset veryfast -tune film -acodec aac -ac 2" ],
+      "ActivateCommands": [ "ADD 1-1 FILE \"<Date{yyyyMMdd}><RecordAppendix> - <Prediger> - <Predigttitel> - <Textstelle>.mov\" -f mov -vcodec h264 -r 25 -b 3500000 -preset veryfast -tune film -acodec aac -ac 2" ],
       "DeactivateCommands": [ "REMOVE 1-1" ]
     }
   ]

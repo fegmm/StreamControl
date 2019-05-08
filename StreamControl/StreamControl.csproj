@@ -122,6 +122,10 @@
       <Project>{13de5462-c0e3-4c1f-9c0f-8e759dd3ee27}</Project>
       <Name>StreamControl.Lowerthirds</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StreamControl.Startup\StreamControl.Startup.csproj">
+      <Project>{CD7A786C-8B55-4416-9F21-6296E5557CF5}</Project>
+      <Name>StreamControl.Startup</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StreamControl.Streams\StreamControl.Streams.csproj">
       <Project>{6b6496c3-c9f1-44b8-852a-6ddcea55ee66}</Project>
       <Name>StreamControl.Streams</Name>

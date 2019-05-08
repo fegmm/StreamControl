@@ -50,8 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreModule.cs" />
+    <Compile Include="Events\StartupDialogClosing.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="Models\Configuration.cs" />
     <Compile Include="PopupMetroWindowAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -75,18 +75,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="core.config.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Events\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <PackageReference Include="MahApps.Metro">
       <Version>1.6.5</Version>
