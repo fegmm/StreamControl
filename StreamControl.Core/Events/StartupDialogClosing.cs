@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StreamControl.Core.Models
+namespace StreamControl.Core.Events
 {
-    class Configuration
+    public class StartupDialogClosing : Prism.Events.PubSubEvent<bool>
     {
-        public ICollection<string> InitCommands { get; set; }
     }
 }
