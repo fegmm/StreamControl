@@ -6,6 +6,10 @@ using Prism.Regions;
 using System.IO;
 using System.Diagnostics;
 using System.Reflection;
+using StreamControl.Core;
+using StreamControl.Lowerthirds;
+using StreamControl.Streams;
+using StreamControl.Startup;
 
 namespace StreamControl
 {
@@ -21,8 +25,16 @@ namespace StreamControl
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterInstance<IConfigurationService>(ConfigurationService.Load(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\config.json"));
-            containerRegistry.RegisterInstance<ICasparCGService>(new CasparCGService());
+        }
+
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+        {
+            moduleCatalog.AddModule(typeof(CoreModule));
+            moduleCatalog.AddModule(typeof(StartupModule));
+            moduleCatalog.AddModule(typeof(StreamsModule));
+            moduleCatalog.AddModule(typeof(LowerthirdsModule));
+
+            base.ConfigureModuleCatalog(moduleCatalog);
         }
     }
 }

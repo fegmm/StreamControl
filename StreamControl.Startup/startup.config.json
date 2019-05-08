@@ -1,0 +1,37 @@
+{
+  "LaunchPrograms": [
+    {
+      "Path": "C:\\Users\\samue\\Downloads\\casparcg-server-2.2.0-stable-windows\\casparcg.exe",
+      "WindowStyle": "Minimized"
+    }
+  ],
+  "Configurations": [
+    {
+      "Name": "Morgengottesdienst",
+      "Values": {
+        "RecordAppendix": "mo"
+      }
+    },
+    {
+      "Name": "Mittaggottesdienst",
+      "Values": {
+        "RecordAppendix": "mi"
+      }
+    },
+    {
+      "Name": "Abendgottesdienst",
+      "Values": {
+        "RecordAppendix": "a"
+      }
+    }
+  ],
+  "Defaults": {
+    "YoutubeKey": "ENTER YOUTUBE KEY",
+    "IcecastPassword": "ENTER ICECAST PASSWORD",
+    "IcecastUser": "ENTER ICECAST USER"
+  },
+  "InitCommands": [
+    "PLAY 1-1 DECKLINK DEVICE 1  CUT 0",
+    "ADD 1 SCREEN"
+  ]
+}

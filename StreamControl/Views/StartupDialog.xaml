@@ -5,17 +5,10 @@
              xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
              prism:ViewModelLocator.AutoWireViewModel="True" FocusManager.FocusedElement="{Binding ElementName=txt}">
     <StackPanel Margin="4">
-        <ItemsControl ItemsSource="{Binding Lowerthirds}" Focusable="False">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="0,4,0,0">
-                        <TextBlock Text="{Binding Title}"/>
-                        <TextBox Text="{Binding Text}" x:Name="txt"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
+        <ItemsControl prism:RegionManager.RegionName="Startup">
+            
         </ItemsControl>
-        <Button Content="{Binding Conf.SaveText}" Command="{Binding OkCommand}" Margin="0,8,0,4" IsDefault="True"/>
+        <Button Content="Ok" Command="{Binding OkCommand}" Margin="0,8,0,4" IsDefault="True"/>
     </StackPanel>
     
 </UserControl>
