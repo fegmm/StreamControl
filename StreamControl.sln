@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamControl.Streams", "St
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamControl.Core", "StreamControl.Core\StreamControl.Core.csproj", "{52AD602E-7567-4792-9C91-A340D0212462}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamControl.Startup", "StreamControl.Startup\StreamControl.Startup.csproj", "{CD7A786C-8B55-4416-9F21-6296E5557CF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{52AD602E-7567-4792-9C91-A340D0212462}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52AD602E-7567-4792-9C91-A340D0212462}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52AD602E-7567-4792-9C91-A340D0212462}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD7A786C-8B55-4416-9F21-6296E5557CF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD7A786C-8B55-4416-9F21-6296E5557CF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD7A786C-8B55-4416-9F21-6296E5557CF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD7A786C-8B55-4416-9F21-6296E5557CF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{13DE5462-C0E3-4C1F-9C0F-8E759DD3EE27} = {C5AB557D-1011-462C-8D3C-83A27526FCC5}
 		{6B6496C3-C9F1-44B8-852A-6DDCEA55EE66} = {C5AB557D-1011-462C-8D3C-83A27526FCC5}
 		{52AD602E-7567-4792-9C91-A340D0212462} = {C5AB557D-1011-462C-8D3C-83A27526FCC5}
+		{CD7A786C-8B55-4416-9F21-6296E5557CF5} = {C5AB557D-1011-462C-8D3C-83A27526FCC5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A6F464A0-405B-4A44-B77A-F862306E6494}

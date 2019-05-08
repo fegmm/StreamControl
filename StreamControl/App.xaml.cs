@@ -9,6 +9,7 @@ using System.Reflection;
 using StreamControl.Core;
 using StreamControl.Lowerthirds;
 using StreamControl.Streams;
+using StreamControl.Startup;
 
 namespace StreamControl
 {
@@ -29,6 +30,7 @@ namespace StreamControl
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             moduleCatalog.AddModule(typeof(CoreModule));
+            moduleCatalog.AddModule(typeof(StartupModule));
             moduleCatalog.AddModule(typeof(StreamsModule));
             moduleCatalog.AddModule(typeof(LowerthirdsModule));
 
