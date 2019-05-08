@@ -30,27 +30,27 @@ namespace StreamControl.Core.Services
                 foreach (var placeholder in Placeholders
                                                 .Concat(propertyPlaceholders)
                                                 .Prepend(ReplaceDatePlaceholder(item)))
-                    sb.Replace(placeholder.Key, placeholder.Value);
+                    sb.Replace("<"+placeholder.Key+">", placeholder.Value);
                 yield return sb.ToString();
             }
         }
 
         private KeyValuePair<string, string> ReplaceDatePlaceholder(string item)
         {
-            int start = item.IndexOf("$Date{") + 6;
+            int start = item.IndexOf("<Date{") + 6;
             if (start < 6)
                 return new KeyValuePair<string, string>("---", "---");
 
             int end = item.IndexOf("}", start);
             var format = item.Substring(start, end - start);
-            return new KeyValuePair<string, string>("$Date{" + format + "}", DateTime.Now.ToString(format));
+            return new KeyValuePair<string, string>("Date{" + format + "}", DateTime.Now.ToString(format));
         }
 
         private static Dictionary<string, string> GetPropertyPlaceholders(object[] instances)
         {
             Dictionary<string, string> propertyPlaceholders = new Dictionary<string, string>();
             foreach (var item in instances.Reverse())
-                foreach (var property in item.GetType().GetProperties(System.Reflection.BindingFlags.Public))
+                foreach (var property in item.GetType().GetProperties())
                     propertyPlaceholders[property.Name] = property.GetValue(item).ToString();
             return propertyPlaceholders;
         }
