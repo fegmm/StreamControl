@@ -21,10 +21,9 @@ namespace StreamControl.Startup
             var placeholderService = containerProvider.Resolve<IPlaceholderService>();
             placeholderService.AddAll(configuration.Defaults);
 
+            var executeService = containerProvider.Resolve<IExecuteService>();
             foreach (var item in configuration.LaunchPrograms)
-            {
-                var process = Process.Start(new ProcessStartInfo(item.Path) { WindowStyle = item.WindowStyle, ErrorDialog = true });
-            }
+                executeService.RunProcess(item.Path, item.Arguments, item.WindowStyle);
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

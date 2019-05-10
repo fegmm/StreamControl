@@ -15,6 +15,7 @@ namespace StreamControl.Core
         {
             containerRegistry.RegisterInstance<ICasparCGService>(new CasparCGService());
             containerRegistry.RegisterInstance<IPlaceholderService>(new PlaceholderService());
+            containerRegistry.RegisterInstance<IExecuteService>(new ExecuteService());
         }
     }
 }
