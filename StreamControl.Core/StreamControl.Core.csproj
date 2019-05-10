@@ -68,7 +68,9 @@
     </Compile>
     <Compile Include="Regions.cs" />
     <Compile Include="Services\CasparCGService.cs" />
+    <Compile Include="Services\ExecuteService.cs" />
     <Compile Include="Services\ICasparCGService.cs" />
+    <Compile Include="Services\IExecuteService.cs" />
     <Compile Include="Services\IPlaceholderService.cs" />
     <Compile Include="Services\PlaceholderService.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

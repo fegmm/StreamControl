@@ -36,5 +36,19 @@ namespace StreamControl.Streams.Models
             get { return deactivateCommands; }
             set { SetProperty(ref deactivateCommands, value); }
         }
+
+        private string commandLineOnDeactivate;
+        public string CommandLineOnDeactivate
+        {
+            get { return commandLineOnDeactivate; }
+            set { SetProperty(ref commandLineOnDeactivate, value); }
+        }
+
+        private string commandLineOnActivate;
+        public string CommandLineOnActivate
+        {
+            get { return commandLineOnActivate; }
+            set { SetProperty(ref commandLineOnActivate, value); }
+        }
     }
 }
