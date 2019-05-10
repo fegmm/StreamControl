@@ -27,9 +27,9 @@ namespace StreamControl.Core.Services
             foreach (var item in texts)
             {
                 StringBuilder sb = new StringBuilder(item);
-                foreach (var placeholder in Placeholders
-                                                .Concat(propertyPlaceholders)
-                                                .Prepend(ReplaceDatePlaceholder(item)))
+                foreach (var placeholder in new[] { ReplaceDatePlaceholder(item) }
+                                                .Concat(Placeholders)
+                                                .Concat(propertyPlaceholders))
                     sb.Replace("<"+placeholder.Key+">", placeholder.Value);
                 yield return sb.ToString();
             }
