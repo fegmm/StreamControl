@@ -1,2 +1,2 @@
 # StreamControl
-StreamControl is a simple Program using CasparCG to display Lowerthirds and to set up output streams
+Application used to simply control a casparcg server or even something else. Offering actions, switches and states for control.
